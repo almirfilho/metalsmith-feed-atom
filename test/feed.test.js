@@ -1,6 +1,7 @@
 const expect = require('chai').expect;
 const metalsmith = require('metalsmith');
 const collections = require('metalsmith-collections');
+const readxml = require('xml2js').parseString;
 const feed = require('../src/feed');
 
 
@@ -51,11 +52,10 @@ describe('Generation', () => {
   );
 
   it('should generate file in default destination', done => {
-    metalfeed({ collection: 'articles' })
-      .build((err, files) => {
-        expect(files).to.contain.keys('index.xml');
-        done();
-      });
+    metalfeed({ collection: 'articles' }).build((err, files) => {
+      expect(files).to.contain.keys('index.xml');
+      done();
+    });
   });
 
   it('should generate file in custom destination', done => {
@@ -64,5 +64,41 @@ describe('Generation', () => {
         expect(files).to.contain.keys('other.xml');
         done();
       });
+  });
+
+  it('should have content', done => {
+    metalfeed({ collection: 'articles' }).build((err, files) => {
+      expect(files['index.xml']).to.have.property('contents');
+      expect(files['index.xml'].contents).to.be.not.empty;
+      done();
+    });
+  });
+
+  it('should have xml content', done => {
+    metalfeed({ collection: 'articles' }).build((err, files) => {
+      var content = files['index.xml'].contents.toString().toLowerCase();
+      expect(content).to.include('<?xml version="1.0"', 'encoding="utf-8"');
+      done();
+    });
+  });
+
+  it('should have atom elements', done => {
+    metalfeed({ collection: 'articles' }).build((err, files) => {
+      readxml(files['index.xml'].contents.toString(), (err, result) => {
+        expect(result).to.deep.equal({
+          feed: {
+            '$': { xmlns: 'http://www.w3.org/2005/Atom' },
+            id: [''],
+            title: [''],
+            updated: [''],
+            link: [
+              {'$': { href: '', rel: 'self' }},
+              {'$': { href: '' }}
+            ]
+          }
+        });
+        done();
+      });
+    });
   });
 });
