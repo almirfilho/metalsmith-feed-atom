@@ -44,8 +44,8 @@ describe('Initialization', () => {
 
 describe('Generation', () => {
   var metalfeed = feedoptions => (
-    metalsmith('test/fixtures')
-      .source('.')
+    metalsmith('test')
+      .source('fixtures')
       .use(collections({ articles: '*.html' }))
       .use(feed(feedoptions))
   );
