@@ -2,7 +2,7 @@
   "name": "metalsmith-feed-atom",
   "version": "0.0.1",
   "description": "A metalsmith plugin to generate Atom feeds.",
-  "main": "index.js",
+  "main": "src/feed.js",
   "scripts": {
     "grunt": "grunt",
     "test": "grunt test"
@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/almirfilho/metalsmith-feed-atom#readme",
   "devDependencies": {
+    "chai": "^3.5.0",
     "grunt": "^1.0.1",
     "grunt-mocha-test": "^0.12.7",
     "load-grunt-tasks": "^3.5.0",
