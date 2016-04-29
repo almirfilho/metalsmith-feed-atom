@@ -41,3 +41,28 @@ describe('Initialization', () => {
     expect(call).not.to.throw(Error);
   });
 });
+
+describe('Generation', () => {
+  var metalfeed = feedoptions => (
+    metalsmith('test/fixtures')
+      .source('.')
+      .use(collections({ articles: '*.html' }))
+      .use(feed(feedoptions))
+  );
+
+  it('should generate file in default destination', done => {
+    metalfeed({ collection: 'articles' })
+      .build((err, files) => {
+        expect(files).to.contain.keys('index.xml');
+        done();
+      });
+  });
+
+  it('should generate file in custom destination', done => {
+    metalfeed({ collection: 'articles', destination: 'other.xml' })
+      .build((err, files) => {
+        expect(files).to.contain.keys('other.xml');
+        done();
+      });
+  });
+});
