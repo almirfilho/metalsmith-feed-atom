@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/almirfilho/metalsmith-feed-atom/issues"
   },
-  "homepage": "https://github.com/almirfilho/metalsmith-feed-atom#readme"
+  "homepage": "https://github.com/almirfilho/metalsmith-feed-atom#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1"
+  }
 }
