@@ -2,7 +2,7 @@ const XmlBuilder = require('xml2js').Builder;
 const url = require('url');
 
 
-const build = function(feedmetadata, items, destination){
+const build = (feedmetadata, items, destination) => {
   var builder = new XmlBuilder({
     rootName: 'feed',
     xmldec: {
@@ -14,7 +14,7 @@ const build = function(feedmetadata, items, destination){
 };
 
 
-const feeddata = function(metadata, items, feedfile){
+const feeddata = (metadata, items, feedfile) => {
   var feed = { '$': { xmlns: 'http://www.w3.org/2005/Atom' } };
 
   if(metadata.url){
