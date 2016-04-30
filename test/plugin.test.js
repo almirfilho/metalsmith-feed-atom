@@ -54,7 +54,6 @@ describe('Generation', () => {
 
   it('should generate file in default destination', done => {
     metalfeed({ collection: 'articles' }).build((err, files) => {
-      console.log(err)
       expect(files).to.contain.keys('index.xml');
       done();
     });
