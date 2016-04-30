@@ -82,23 +82,32 @@ describe('Generation', () => {
     });
   });
 
-  it('should have atom elements', done => {
-    metalfeed({ collection: 'articles' }).build((err, files) => {
-      readxml(files['index.xml'].contents.toString(), (err, result) => {
-        expect(result).to.deep.equal({
-          feed: {
-            '$': { xmlns: 'http://www.w3.org/2005/Atom' },
-            id: [''],
-            title: [''],
-            updated: [''],
-            link: [
-              {'$': { href: '', rel: 'self' }},
-              {'$': { href: '' }}
-            ]
-          }
+  it('should have basic atom elements', done => {
+    const metadata = {
+      title: 'Something',
+      subtitle: 'Something else',
+      url: 'http://something.com',
+      updated: new Date().toISOString()
+    };
+
+    metalfeed({ collection: 'articles', metadata: metadata })
+      .build((err, files) => {
+        readxml(files['index.xml'].contents.toString(), (err, result) => {
+          expect(result).to.deep.equal({
+            feed: {
+              '$': { xmlns: 'http://www.w3.org/2005/Atom' },
+              id: [metadata.url],
+              title: [metadata.title],
+              subtitle: [metadata.subtitle],
+              updated: [metadata.updated],
+              link: [
+                {'$': { href: metadata.url }},
+                {'$': { href: metadata.url+'/index.xml', rel: 'self' }}
+              ]
+            }
+          });
+          done();
         });
-        done();
       });
-    });
   });
 });
