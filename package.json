@@ -2,6 +2,13 @@
   "name": "metalsmith-feed-atom",
   "version": "1.0.0",
   "description": "A metalsmith plugin to generate Atom feeds.",
+  "keywords": [
+    "metalsmith",
+    "plugin",
+    "feed",
+    "atom",
+    "xml"
+  ],
   "main": "src/plugin.js",
   "scripts": {
     "grunt": "grunt",
@@ -12,6 +19,7 @@
     "url": "git+https://github.com/almirfilho/metalsmith-feed-atom.git"
   },
   "author": "Almir Filho <almir@almirfilho.com>",
+  "contributors": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/almirfilho/metalsmith-feed-atom/issues"
@@ -29,5 +37,8 @@
   },
   "dependencies": {
     "xml2js": "^0.4.16"
+  },
+  "engines": {
+    "node": ">=5"
   }
 }

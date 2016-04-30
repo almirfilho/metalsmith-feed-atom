@@ -7,6 +7,15 @@
 Requires [metalsmith-collections][collections] plugin to work.
 
 
+## Installation
+
+Install it via NPM:
+
+```bash
+$ npm install metalsmith-feed-atom
+```
+
+
 ## Usage
 
 ```javascript
@@ -64,7 +73,7 @@ $ npm run grunt -- test
 
 ### Automated workflow
 
-You can keep the tests running automaticaly every time you make any change to 
+You can keep the tests running automaticaly every time you make any change to
 the code with `dev` workflow:
 
 ```bash
