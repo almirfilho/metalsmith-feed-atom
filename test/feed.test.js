@@ -37,7 +37,7 @@ describe('Initialization', () => {
   });
 
   it('should not throw error if collection exist', () => {
-    metal._metadata.collections = { articles: {} };
+    metal._metadata.collections = { articles: [] };
     var call = feed({ collection: 'articles' }).bind(null, [], metal, () => {});
     expect(call).not.to.throw(Error);
   });
@@ -93,18 +93,52 @@ describe('Generation', () => {
     metalfeed({ collection: 'articles', metadata: metadata })
       .build((err, files) => {
         readxml(files['index.xml'].contents.toString(), (err, result) => {
-          expect(result).to.deep.equal({
-            feed: {
-              '$': { xmlns: 'http://www.w3.org/2005/Atom' },
-              id: [metadata.url],
-              title: [metadata.title],
-              subtitle: [metadata.subtitle],
-              updated: [metadata.updated],
-              link: [
-                {'$': { href: metadata.url }},
-                {'$': { href: metadata.url+'/index.xml', rel: 'self' }}
-              ]
-            }
+          expect(result).to.have.property('feed');
+          expect(result.feed).to.have.deep.property('$.xmlns', 'http://www.w3.org/2005/Atom');
+          expect(result.feed).to.have.deep.property('id.0', metadata.url);
+          expect(result.feed).to.have.deep.property('title.0', metadata.title);
+          expect(result.feed).to.have.deep.property('subtitle.0', metadata.subtitle);
+          expect(result.feed).to.have.deep.property('updated.0', metadata.updated);
+          expect(result.feed).to.have.deep.property('link');
+          expect(result.feed.link).to.deep.equal([
+            {'$': { href: metadata.url }},
+            {'$': { href: metadata.url+'/index.xml', rel: 'self' }}
+          ]);
+          done();
+        });
+      });
+  });
+
+  it('should have entry items', done => {
+    var metadata = { url: 'http://something.com' };
+
+    metalfeed({ collection: 'articles', metadata: metadata })
+      .build((err, files) => {
+        readxml(files['index.xml'].contents.toString(), (err, result) => {
+          expect(result.feed).to.have.property('entry');
+          expect(result.feed.entry).to.have.length(2);
+          done();
+        });
+      });
+  });
+
+  it('should have atom entry elements', done => {
+    var metadata = { url: 'http://something.com' };
+
+    metalfeed({ collection: 'articles', metadata: metadata })
+      .build((err, files) => {
+        readxml(files['index.xml'].contents.toString(), (err, result) => {
+          expect(result.feed.entry[0]).to.deep.equal({
+            id: [metadata.url + '/article1.html'],
+            title: ['Article 1'],
+            updated: [new Date('2014-12-12').toISOString()],
+            content: ['\nArticle 1 content.\n'],
+            link: [{'$': { href: metadata.url + '/article1.html' }}],
+            author: [{
+              name: ['Some Guy'],
+              uri: ['http://someguy.com'],
+              email: ['some@guy.com']
+            }]
           });
           done();
         });
