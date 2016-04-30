@@ -144,4 +144,22 @@ describe('Generation', () => {
         });
       });
   });
+
+  it('should escape html content in entries', done => {
+    metalfeed({ collection: 'articles' }).build((err, files) => {
+      expect(files['index.xml'].contents.toString())
+        .to.contain('&lt;p&gt;Article 2 content.&lt;/p&gt;')
+      done();
+    });
+  });
+
+  it('should limit entries', done => {
+    metalfeed({ collection: 'articles', limit: 1 }).build((err, files) => {
+      readxml(files['index.xml'].contents.toString(), (err, result) => {
+        expect(result.feed.entry).to.have.length(1)
+          .and.to.have.deep.property('0.title.0', 'Article 1');
+        done();
+      });
+    });
+  });
 });
