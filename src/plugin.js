@@ -1,4 +1,4 @@
-const build = require('./data').build;
+const build = require('./atom').build;
 
 
 const defaults = {

@@ -2,7 +2,7 @@ const expect = require('chai').expect;
 const metalsmith = require('metalsmith');
 const collections = require('metalsmith-collections');
 const readxml = require('xml2js').parseString;
-const feed = require('../src/feed');
+const feed = require('../src/plugin');
 
 
 describe('Initialization', () => {
@@ -42,6 +42,7 @@ describe('Initialization', () => {
     expect(call).not.to.throw(Error);
   });
 });
+
 
 describe('Generation', () => {
   var metalfeed = feedoptions => (
