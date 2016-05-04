@@ -31,21 +31,36 @@ metalsmith('working/dir')
 
 ## Options
 
-- `collection` __string__ _required_: Name of the configured
-  metalsmith-collection to build the feed from.
-- `limit` __number__ _optional_: Maximum number of files to show in the feed.
-  Defaults to 10.
-- `destination` __string__ _optional_: File path to write the rendered XML feed.
-  Defaults to 'index.xml'.
-- `metadata` __object__ _optional_: Metadata containing important information
-  about your feed. Despite it isn't a required option, you must provide it in
-  order to generate a valid Atom feed.
-  - `metadata.title` __string__ _required_: Title of your site/feed.
-  - `metadata.subtitle` __string__ _optional_: Subtitle of your site/feed.
-  - `metadata.url` __string__ _required_: Url of your site. This is also used as
-    base url to produce files (feed entries) urls.
-  - `metadata.updated` __datetime__ _optional_: Last time your feed was updated.
-    Defaults to the moment you generate it.
+#### `collection`
+
+Type: __String__ _(Required)_  
+Name of the configured metalsmith-collection to build the feed from.
+
+
+#### `limit`
+
+Type: __Number__ _(Optional)_  
+Maximum number of files to show in the feed. Defaults to 10.
+
+
+#### `destination`
+
+Type: __String__ _(Optional)_  
+File path to write the rendered XML feed. Defaults to 'index.xml'.
+
+
+#### `metadata`
+
+Type: __Object__ _(Optional)_  
+Metadata containing important information about your feed. Despite it isn't a 
+required option, you must provide it in order to generate a valid Atom feed.
+
+- `metadata.title` __string__ _required_: Title of your site/feed.
+- `metadata.subtitle` __string__ _optional_: Subtitle of your site/feed.
+- `metadata.url` __string__ _required_: Url of your site. This is also used as 
+  base url to produce files (feed entries) urls.
+- `metadata.updated` __datetime__ _optional_: Last time your feed was updated.
+  Defaults to the moment you generate it.
 
 Files __must__ have `path` metadata (perhaps from
 [metalsmith-permalinks][permalinks]) in order to have its links outputted in the
