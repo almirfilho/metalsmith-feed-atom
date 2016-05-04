@@ -1,9 +1,9 @@
-const XmlBuilder = require('xml2js').Builder;
-const url = require('url');
+const xmlbuilder = require('xml2js').Builder;
+const resolve = require('url').resolve;
 
 
 const build = (feedmetadata, items, destination) => {
-  var builder = new XmlBuilder({
+  var builder = new xmlbuilder({
     rootName: 'feed',
     xmldec: {
       encoding: 'utf-8',
@@ -21,7 +21,7 @@ const feeddata = (metadata, items, feedfile) => {
     feed.id = metadata.url;
     feed.link = [
       { '$': { href: metadata.url } },
-      { '$': { href: url.resolve(metadata.url, feedfile), rel: 'self' } }
+      { '$': { href: resolve(metadata.url, feedfile), rel: 'self' } }
     ];
   }
 
@@ -38,7 +38,7 @@ const entrydata = (metadata, item) => {
   var entry = { title: item.title };
 
   if(metadata.url){
-    entry.id = url.resolve(metadata.url, item.path || '');
+    entry.id = resolve(metadata.url, item.path || '');
     entry.link = { '$': { href: entry.id } };
   }
 
