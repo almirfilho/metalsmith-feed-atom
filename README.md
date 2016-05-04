@@ -1,6 +1,6 @@
-# metalsmith-feed-atom
+# metalsmith-feed-atom [![Build Status][travis-badge]][travis] [![npm][npm-badge]][npm]
 
-> A [metalsmith][metal] plugin to generate Atom feed for a collection.  
+> A [metalsmith][metal] plugin to generate Atom feed for a collection.
 > If you're looking for RSS standard instead of Atom, take a look on
 > [metalsmith-feed][feed] plugin.
 
@@ -89,6 +89,10 @@ Always implement tests for whatever you're adding to the project. Thanks!
 [MIT][license] © Almir Filho
 
 
+[travis]: https://travis-ci.org/almirfilho/metalsmith-feed-author
+[travis-badge]: https://travis-ci.org/almirfilho/metalsmith-feed-author.svg?branch=master
+[npm]: https://www.npmjs.com/package/metalsmith-feed-author
+[npm-badge]: https://img.shields.io/npm/v/metalsmith-feed-author.svg?maxAge=2592000
 [metal]: http://www.metalsmith.io/
 [feed]: https://github.com/hurrymaplelad/metalsmith-feed
 [collections]: https://github.com/segmentio/metalsmith-collections
