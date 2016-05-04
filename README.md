@@ -89,10 +89,10 @@ Always implement tests for whatever you're adding to the project. Thanks!
 [MIT][license] © Almir Filho
 
 
-[travis]: https://travis-ci.org/almirfilho/metalsmith-feed-author
-[travis-badge]: https://travis-ci.org/almirfilho/metalsmith-feed-author.svg?branch=master
-[npm]: https://www.npmjs.com/package/metalsmith-feed-author
-[npm-badge]: https://img.shields.io/npm/v/metalsmith-feed-author.svg?maxAge=2592000
+[travis]: https://travis-ci.org/almirfilho/metalsmith-feed-atom
+[travis-badge]: https://travis-ci.org/almirfilho/metalsmith-feed-atom.svg?branch=master
+[npm]: https://www.npmjs.com/package/metalsmith-feed-atom
+[npm-badge]: https://img.shields.io/npm/v/metalsmith-feed-atom.svg?maxAge=2592000
 [metal]: http://www.metalsmith.io/
 [feed]: https://github.com/hurrymaplelad/metalsmith-feed
 [collections]: https://github.com/segmentio/metalsmith-collections
