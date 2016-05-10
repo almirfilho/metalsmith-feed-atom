@@ -107,7 +107,7 @@ Always implement tests for whatever you're adding to the project. Thanks!
 [travis]: https://travis-ci.org/almirfilho/metalsmith-feed-atom
 [travis-badge]: https://travis-ci.org/almirfilho/metalsmith-feed-atom.svg?branch=master
 [npm]: https://www.npmjs.com/package/metalsmith-feed-atom
-[npm-badge]: https://img.shields.io/npm/v/metalsmith-feed-atom.svg?maxAge=2592000
+[npm-badge]: https://img.shields.io/npm/v/metalsmith-feed-atom.svg?maxAge=3600
 [metal]: http://www.metalsmith.io/
 [feed]: https://github.com/hurrymaplelad/metalsmith-feed
 [collections]: https://github.com/segmentio/metalsmith-collections
