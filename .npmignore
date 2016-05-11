@@ -1,4 +1,5 @@
 tasks
 test
 .editorconfig
+.travis.yml
 Gruntfile.js
